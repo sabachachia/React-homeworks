@@ -1,87 +1,84 @@
-import React from "react";
-import "./style.css";
+const root = document.getElementById("root");
 
-export default function App() {
-  const items = [
-    {
-      title: "Lorem, ipsum dolor",
-      stock: "In Stock",
-      rating: "1.5/5",
-      badges: ["badge-1", "badge-2"],
-      texts: ["sport", "lifestyle"],
-    },
-    {
-      title: "Lorem, ipsum dolor",
-      stock: "Out Stock",
-      rating: "3.4/5",
-      badges: ["badge-1", "badge-2"],
-      texts: ["Casual", "lifestyle"],
-    },
-    {
-      title: "Lorem, ipsum dolor",
-      stock: "Out Stock",
-      rating: "0.5/5",
-      badges: ["badge-1", "badge-2"],
-      texts: ["sport", "lifestyle"],
-    },
-    {
-      title: "Lorem, ipsum dolor",
-      stock: "In Stock",
-      rating: "1/5",
-      badges: ["badge-1", "badge-2"],
-      texts: ["Casual", "lifestyle"],
-    },
-    {
-      title: "Lorem, ipsum dolor",
-      stock: "In Stock",
-      rating: "2.5/5",
-      badges: ["badge-1", "badge-2"],
-      texts: ["Casual", "lifestyle"],
-    },
-    {
-      title: "Lorem, ipsum dolor",
-      stock: "Out Stock",
-      rating: "4.9/5",
-      badges: ["badge-1", "badge-2"],
-      texts: ["sport", "lifestyle"],
-    },
-  ];
+const items = [
+  {
+    title: "Lorem, ipsum dolor",
+    stock: "In Stock",
+    points: "Points 1.5/5",
+    badge1: "sport",
+    badge2: "lifestyle",
+  },
+  {
+    title: "Lorem, ipsum dolor",
+    stock: "Out Stock",
+    points: "3.4/5",
+    badge1: "Casual",
+    badge2: "lifestyle",
+  },
+  {
+    title: "Lorem, ipsum dolor",
+    stock: "Out Stock",
+    points: "0.5/5",
+    badge1: "sport",
+    badge2: "lifestyle",
+  },
+  {
+    title: "Lorem, ipsum dolor",
+    stock: "In Stock",
+    points: "1/5",
+    badge1: "Casual",
+    badge2: "lifestyle",
+  },
+  {
+    title: "Lorem, ipsum dolor",
+    stock: "In Stock",
+    points: "2.5/5",
+    badge1: "Casual",
+    badge2: "lifestyle",
+  },
+  {
+    title: "Lorem, ipsum dolor",
+    stock: "Out Stock",
+    points: "4.9/5",
+    badge1: "sport",
+    badge2: "lifestyle",
+  },
+];
 
-  return (
-    <div>
-      <main className="container">
-        {items.map((item, index) => (
-          <div className="shopping-item" key={index}>
-            <h3>{item.title}</h3>
-            <img
-              src="https://source.unsplash.com/random/200x300"
-              alt="image"
-            />
+function Card({props}){
+    return (
+        <div className="shopping-item">
+            <h3>
+                {props.title}
+            </h3>
+            <img src="https://www.shutterstock.com/shutterstock/photos/2286554497/display_1500/stock-photo-random-pictures-cute-and-funny-2286554497.jpg" alt="image"/>
             <div className="description">
-              <span>{item.stock}</span>
-              <span>{item.rating}</span>
+                <span>
+                    {props.stock}
+                </span>
+                <span>
+                    {props.points}
+                </span>
             </div>
             <div className="badges">
-              {item.badges.map((badge, i) => (
-                <span key={i} className={badge}>
-                  {item.texts[i]}
+                <span className="badge-1">
+                    {props.badge1}
                 </span>
-              ))}
-            </div>
-            <button>Add To Cart</button>
-          </div>
-        ))}
-      </main>
-
-      <section className="container">
-        <div className="block-listing">
-          <span className="badge-1">Random 1</span>
-          <span className="badge-2">Random 2</span>
-          <span className="badge-3">Random 3</span>
-          <span className="badge-4">Random 4</span>
+                <span className="badge-2">{props.badge2}</span>
+                </div>    
+                     <button>Add To Cart</button>   
         </div>
-        <div className="banner"></div>
-      </section>
-    </div>
-  );
+    )
 }
+
+function App(){
+    return (
+        <main className="container">
+            {items.map((item)=>(
+                <Card props={item}/>
+            ))}
+        </main>    
+        )
+}
+
+ReactDOM.render(<App/> , root)
